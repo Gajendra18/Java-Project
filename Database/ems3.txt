@@ -1,0 +1,46 @@
+ create database ems3;
+use ems3;
+ DROP TABLE IF EXISTS `employee`;
+ /*!40101 SET @saved_cs_client     = @@character_set_client */;
+CREATE TABLE `employee` (
+    `E_id` int(11) NOT NULL AUTO_INCREMENT,
+      `Ename` char(50) DEFAULT NULL,
+      `Email` varchar(50) DEFAULT NULL,
+      `contact` varchar(10) DEFAULT NULL,
+      `Username` varchar(20) DEFAULT NULL,
+     `Password` varchar(20) DEFAULT NULL,
+     `Squestion` varchar(50) DEFAULT NULL,
+      `Sans` varchar(20) DEFAULT NULL,
+      PRIMARY KEY (`E_id`)
+     );
+ DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+       `admin_id` int(11) NOT NULL,
+       `password` varchar(20) DEFAULT NULL,
+       `username` varchar(20) DEFAULT NULL,
+       `Aname` char(50) DEFAULT NULL,
+      PRIMARY KEY (`admin_id`)
+    );
+DROP TABLE IF EXISTS `application`;
+ CREATE TABLE `application` (
+      `E_id` int(11) DEFAULT NULL,
+       `type` varchar(50) DEFAULT NULL,
+       `date` date DEFAULT NULL,
+       `cdate` date DEFAULT NULL,
+       `image` longblob,
+       `amount` int(11) DEFAULT NULL,
+       `status` char(20) DEFAULT NULL,
+       `app_id` int(11) NOT NULL AUTO_INCREMENT,
+       PRIMARY KEY (`app_id`),
+     foreign key(E_id) references employee(E_id)
+    );
+DROP TABLE IF EXISTS `e_bank`;
+ CREATE TABLE `e_bank` (
+      `E_id` int(11) DEFAULT NULL,
+       `Bname` varchar(50) DEFAULT NULL,
+       `Baccount` int(11) DEFAULT NULL,
+       `Bbranch` varchar(50) DEFAULT NULL,
+       `Bifsc` varchar(10) DEFAULT NULL,
+     foreign key(E_id) references employee(E_id)
+     );
+ insert into admin values(1,'Gajendra123','Gajendra123','Gajendra Raut');
